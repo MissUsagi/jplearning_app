@@ -1,14 +1,14 @@
 <template>
   <primary-header />
   <side-navigation />
-  <content-container />
+  <dashboard-container />
 </template>
 
 <script>
 import SideNavigation from './components/navigation/SideNavigation.vue'
 import PrimaryHeader from './components/navigation/PrimaryHeader.vue'
-import ContentContainer from './components/UI/ContentContainer.vue'
+import DashboardContainer from './components/UI/DashboadContainer.vue'
 export default {
-  components: { SideNavigation, PrimaryHeader, ContentContainer }
+  components: { SideNavigation, PrimaryHeader, DashboardContainer }
 }
 </script>

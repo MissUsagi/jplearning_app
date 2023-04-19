@@ -1,33 +1,32 @@
 <script>
+import { storeToRefs } from 'pinia'
+import { useKanjiStore } from '../../stores/kanjiStore.js'
+import { ref } from 'vue'
+
 export default {
   data() {
     return {
-      dummyKanji: {
-        id: 1,
-        isDifficult: false,
-        kanjiLvl: 'N5',
-        kanji: '見',
-        onReadings: ['ケン'],
-        kunReadings: ['み.る', 'み.える', 'み.せる'],
-        meanings: 'Patrzeć',
-        description: [
-          `見る 【みる】 to see, to look, to watch`,
-          `見る見る 【みるみる】 very fast, in a twinkle, before one's eyes`
-        ]
-      }
+      dummyKanji: useKanjiStore().kanjiCharacters[1]
+    }
+  },
+  methods: {
+    test() {
+      console.log(this.dummyKanji)
     }
   }
 }
 </script>
 
 <template>
-  <div class="card">
+  <base-card @click="test">
     <div class="content">
       <div class="top">
         <div class="badge">
           <span>{{ dummyKanji.kanjiLvl }}</span>
         </div>
-        <div class="badge"><span>X</span></div>
+        <div class="badge">
+          <span>X</span>
+        </div>
       </div>
 
       <div class="row">
@@ -60,20 +59,10 @@ export default {
       </div>
       <div class="bottom">Edytuj</div>
     </div>
-  </div>
+  </base-card>
 </template>
 
 <style scoped lang="scss">
-.card {
-  position: relative;
-  padding: 1.5rem;
-  width: 640px;
-  min-height: 340px;
-  background-color: white;
-  outline: 10px solid var(--c-kanji-primary-m);
-  border-radius: 12px;
-  overflow: hidden;
-}
 // .content {
 //   padding: 1.5rem;
 // }
@@ -95,6 +84,7 @@ export default {
   bottom: 0;
   right: 1.5rem;
   font-weight: bold;
+  font-size: small;
   color: var(--c-grey);
 }
 

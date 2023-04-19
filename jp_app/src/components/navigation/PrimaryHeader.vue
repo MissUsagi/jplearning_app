@@ -15,7 +15,7 @@
   left: var(--side-nav-width);
   padding: 0 2rem 0 2rem;
   background: white;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #d6d1d1;
   display: flex;
   align-items: center;
   justify-content: space-between;

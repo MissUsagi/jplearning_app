@@ -29,17 +29,22 @@ li {
   left: 0;
   width: var(--side-nav-width);
   height: 100vh;
-  border-right: 1px solid var(--c-text-primary);
+  border-right: 1px solid #d6d1d1;
   padding: 1rem 2rem;
 }
 
 .logo {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .nav ul li {
   cursor: pointer;
   text-transform: capitalize;
-  margin: 10px 0;
+  margin: 15px 0;
+}
+
+li {
+  font-size: 1.2rem;
 }
 </style>
