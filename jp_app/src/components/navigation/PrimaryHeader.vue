@@ -11,7 +11,7 @@
 .top-nav {
   height: var(--top-nav-height);
   width: calc(100vw - var(--side-nav-width));
-  position: absolute;
+  position: fixed;
   left: var(--side-nav-width);
   padding: 0 2rem 0 2rem;
   background: white;
@@ -19,5 +19,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 3;
 }
 </style>

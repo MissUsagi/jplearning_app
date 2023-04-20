@@ -24,11 +24,11 @@ li {
   list-style: none;
 }
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: var(--side-nav-width);
-  height: 100vh;
+  height: 100%;
   border-right: 1px solid #d6d1d1;
   padding: 1rem 2rem;
 }

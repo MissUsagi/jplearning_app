@@ -6,20 +6,20 @@
 
 <script>
 export default {
-  // props: ['color'],
+  props: ['color', 'width'],
   data() {
     return {
-      outlineColor: 'var(--c-kanji-primary-m)'
+      outlineColor: 'var(--c-n5-m)'
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .card {
   position: relative;
   padding: 1.5rem;
-  width: 640px;
+  width: v-bind(width);
   min-height: 340px;
   background-color: white;
   outline: 10px solid v-bind(outlineColor);

@@ -1,20 +1,36 @@
 <template>
   <div class="mini-card">
     <div class="content">
-      <span class="badge">N4</span>
-      <div class="kanji"><h2>家</h2></div>
-      <div class="meaning"><h3>DOM</h3></div>
+      <span class="badge">{{ jlpt }}</span>
+      <div class="kanji">
+        <h2>{{ kanji }}</h2>
+      </div>
+      <div class="meaning">
+        <h3>{{ meaning }}</h3>
+      </div>
     </div>
   </div>
 </template>
 
+<script>
+export default {
+  props: ['jlpt', 'kanji', 'meaning'],
+  data() {
+    return {
+      baseColor: `var(--c-${this.jlpt.toLowerCase()}-m)`
+    }
+  }
+}
+</script>
+
 <style scoped lang="scss">
+$base-color: v-bind(baseColor);
 .mini-card {
   background-color: white;
   color: var(--c-text-primary);
   width: 180px;
   height: 180px;
-  outline: 10px solid var(--c-kanji-primary-m);
+  outline: 10px solid $base-color;
   border-radius: 10px;
   cursor: pointer;
 
@@ -36,9 +52,10 @@
     position: absolute;
     top: 10px;
     left: 10px;
+
     font-weight: bold;
     font-size: 1.5rem;
-    color: var(--c-kanji-primary-m);
+    color: $base-color;
   }
   & .kanji {
     flex: 2;
@@ -53,10 +70,11 @@
   & .meaning {
     flex: 1;
     position: relative;
-    border-top: 4px dashed var(--c-kanji-primary-m);
+    border-top: 4px dashed $base-color;
     padding: 3px 10px;
     h3 {
       position: absolute;
+      text-transform: uppercase;
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);

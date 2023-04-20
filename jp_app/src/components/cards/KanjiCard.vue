@@ -11,7 +11,7 @@ function test() {
 </script>
 
 <template>
-  <base-card @click="test" color="orange">
+  <base-card @click="test" width="640px">
     <div class="content">
       <div class="top">
         <div class="badge">
@@ -56,6 +56,8 @@ function test() {
 </template>
 
 <style scoped lang="scss">
+$base-color: var(--c-n5-m);
+$secondary-color: var(--c-kanji-primary-l);
 .top {
   display: flex;
   width: 100%;
@@ -74,7 +76,7 @@ function test() {
   bottom: 0;
   right: 1.5rem;
   font-weight: bold;
-  font-size: small;
+  font-size: 0.8rem;
   color: var(--c-grey);
   span {
     margin-right: 1rem;
@@ -109,7 +111,7 @@ function test() {
     width: 80%;
     flex: 1;
     text-transform: uppercase;
-    border-bottom: 2px dashed var(--c-kanji-primary-m);
+    border-bottom: 2px dashed $base-color;
     margin-bottom: 0.3rem;
     font-size: 2.3rem;
   }
@@ -126,7 +128,7 @@ function test() {
 }
 
 .desc-card {
-  background: var(--c-kanji-primary-l);
+  background: $secondary-color;
   border-radius: 5px;
   padding: 0.8rem;
 }
@@ -137,7 +139,7 @@ function test() {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: var(--c-kanji-primary-m);
+  background-color: $base-color;
   border-radius: 7px;
   text-align: center;
 

@@ -12,6 +12,12 @@
   --side-nav-width: 15vw;
   --top-nav-height: 80px;
   --japanese-font: 'Noto Sans JP', sans-serif;
+  --c-n5-m: #F49AC3;
+  --c-n4-m: #5EE7DA;
+  --c-n3-m: #F5C172;
+  --c-n2-m: #9667AC;
+  --c-n1-m: #9BE96B;
+  --input-border: #c7c7cb;
 }
 
 *,
