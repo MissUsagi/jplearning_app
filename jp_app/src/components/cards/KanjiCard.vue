@@ -1,24 +1,17 @@
-<script>
+<script setup>
 import { storeToRefs } from 'pinia'
 import { useKanjiStore } from '../../stores/kanjiStore.js'
 import { ref } from 'vue'
 
-export default {
-  data() {
-    return {
-      dummyKanji: useKanjiStore().kanjiCharacters[1]
-    }
-  },
-  methods: {
-    test() {
-      console.log(this.dummyKanji)
-    }
-  }
+const dummyKanji = useKanjiStore().kanjiCharacters[1]
+
+function test() {
+  console.log(dummyKanji)
 }
 </script>
 
 <template>
-  <base-card @click="test">
+  <base-card @click="test" color="orange">
     <div class="content">
       <div class="top">
         <div class="badge">
@@ -37,11 +30,11 @@ export default {
           <div class="desc-card readings">
             <div class="reading">
               <span>on: </span>
-              <p>{{ dummyKanji.onReadings }}</p>
+              <p>{{ dummyKanji.onReadings.join(', ') }}</p>
             </div>
             <div class="reading">
               <span>kun: </span>
-              <p>{{ dummyKanji.kunReadings }}</p>
+              <p>{{ dummyKanji.kunReadings.join(', ') }}</p>
             </div>
             <div></div>
           </div>
@@ -57,15 +50,12 @@ export default {
           </div>
         </div>
       </div>
-      <div class="bottom">Edytuj</div>
+      <div class="bottom"><span>Usuń</span><span>Edytuj</span></div>
     </div>
   </base-card>
 </template>
 
 <style scoped lang="scss">
-// .content {
-//   padding: 1.5rem;
-// }
 .top {
   display: flex;
   width: 100%;
@@ -86,6 +76,12 @@ export default {
   font-weight: bold;
   font-size: small;
   color: var(--c-grey);
+  span {
+    margin-right: 1rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 .l-side {

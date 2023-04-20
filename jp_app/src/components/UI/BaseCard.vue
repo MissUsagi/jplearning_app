@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  // props: ['color'],
   data() {
     return {
       outlineColor: 'var(--c-kanji-primary-m)'

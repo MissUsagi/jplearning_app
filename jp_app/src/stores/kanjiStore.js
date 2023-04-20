@@ -36,12 +36,3 @@ export const useKanjiStore = defineStore('kanjiStore', () => {
 
   return { kanjiCharacters, kanji }
 })
-
-// // const count = ref(0)
-// // const doubleCount = computed(() => count.value * 2)
-// const kanji = computed(() => kanjiCharacters.value)
-// function increment() {
-//   return console.log(kanji)
-// }
-
-// return { kanjiCharacters, increment, kanji }
