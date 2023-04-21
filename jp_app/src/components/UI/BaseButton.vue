@@ -1,10 +1,15 @@
 <template>
-  <button class="btn" type="button">{{ btnTxt }}</button>
+  <button class="btn" type="button" @click="clickEventHandler">{{ btnTxt }}</button>
 </template>
 
 <script>
 export default {
-  props: ['btnTxt']
+  props: ['btnTxt'],
+  methods: {
+    clickEventHandler() {
+      this.$emit('clickEvent')
+    }
+  }
 }
 </script>
 
@@ -12,17 +17,24 @@ export default {
 .btn {
   height: 50px;
   width: 100%;
-  background-color: var(--c-kanji-primary-m);
-  border: none;
   border-radius: 25px;
-  color: white;
   font-size: 1.4rem;
   text-transform: uppercase;
   font-weight: bold;
+
+  &.primary {
+    background-color: var(--c-kanji-primary-m);
+    color: white;
+    border: none;
+  }
   &.outline {
     background-color: white;
     color: var(--c-kanji-primary-m);
     border: 1px solid var(--c-kanji-primary-m);
+  }
+
+  &:hover {
+    font-size: 1.6rem;
   }
 }
 </style>
