@@ -1,9 +1,13 @@
 <template>
   <section>
     <div class="container">
-      <kanji-card />
-      <kanji-small-card jlpt="N4" kanji="家" meaning="dom" />
-      <kanji-small-card jlpt="N5" kanji="見" meaning="patrzeć" />
+      <kanji-card v-for="(kanji, index) in getKanji" :kanjiCharacter="kanji" :key="kanji.id" />
+      <kanji-small-card
+        v-for="kanji in getKanji"
+        :jlpt="kanji.kanjiLvl"
+        :kanji="kanji.kanji"
+        :meaning="kanji.meanings"
+      />
       <kanji-form />
     </div>
   </section>
@@ -13,8 +17,18 @@
 import KanjiCard from '../cards/KanjiCard.vue'
 import KanjiSmallCard from '../cards/KanjiSmallCard.vue'
 import KanjiForm from '../forms/KanjiForm.vue'
+import { mapState } from 'pinia'
+import { useKanjiStore } from '../../stores/kanjiStore'
 export default {
-  components: { KanjiCard, KanjiSmallCard, KanjiForm }
+  components: { KanjiCard, KanjiSmallCard, KanjiForm },
+  computed: {
+    ...mapState(useKanjiStore, ['getKanji'])
+  },
+  methods: {
+    test() {
+      console.log(this.kanjiCharacters)
+    }
+  }
 }
 </script>
 
