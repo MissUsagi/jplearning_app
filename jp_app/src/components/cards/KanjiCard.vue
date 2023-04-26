@@ -1,23 +1,12 @@
-<script setup>
-import { storeToRefs } from 'pinia'
-import { useKanjiStore } from '../../stores/kanjiStore.js'
-import { ref } from 'vue'
-
-const dummyKanji = useKanjiStore().kanjiCharacters[1]
-
-function test() {
-  console.log(dummyKanji)
-}
-</script>
-
 <template>
-  <base-card @click="test" width="640px">
-    <div class="content">
-      <div class="top">
+  <base-card width="640px" :card-outline="colorCode">
+    <div @click="test">
+      <div class="top-section">
         <div class="badge">
-          <span>{{ dummyKanji.kanjiLvl }}</span>
+          <span>{{ kanjiLvl }}</span>
         </div>
         <div class="badge">
+          <!-- dodac ikonke  -->
           <span>X</span>
         </div>
       </div>
@@ -25,52 +14,71 @@ function test() {
       <div class="row">
         <div class="l-side">
           <div>
-            <h2>{{ dummyKanji.kanji }}</h2>
+            <h2>{{ kanji }}</h2>
           </div>
-          <div class="desc-card readings">
+          <div class="description-card readings">
             <div class="reading">
               <span>on: </span>
-              <p>{{ dummyKanji.onReadings.join(', ') }}</p>
+              <p>{{ onReadings.join(', ') }}</p>
             </div>
             <div class="reading">
               <span>kun: </span>
-              <p>{{ dummyKanji.kunReadings.join(', ') }}</p>
+              <p>{{ kunReadings.join(', ') }}</p>
             </div>
-            <div></div>
           </div>
         </div>
         <div class="r-side">
           <div>
-            <h2 class="card-header">{{ dummyKanji.meanings }}</h2>
+            <h2 class="kanji-meaning">{{ meanings }}</h2>
           </div>
-          <div class="desc-card description">
-            <div v-for="desc in dummyKanji.description">
+          <div class="description-card">
+            <div v-for="desc in description">
               <p>{{ desc }}</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="bottom"><span>Usuń</span><span>Edytuj</span></div>
+      <div class="actions"><span>Usuń</span><span>Edytuj</span></div>
     </div>
   </base-card>
 </template>
 
+<script setup>
+import { toRefs } from 'vue'
+const props = defineProps(['kanjiCharacter'])
+const { kanjiCharacter } = toRefs(props)
+const { kanjiLvl, kanji, onReadings, kunReadings, description, meanings } = kanjiCharacter.value
+
+const colorCode = kanjiLvl.toLowerCase()
+const primaryColor = `var(--c-${colorCode}-m)`
+const secondaryColor = `var(--c-${colorCode}-l)`
+
+// TEST SECTION
+// const { kanjiLvl, kanji, onReadings, kunReadings, description, meanings } =
+//   useKanjiStore().kanjiCharacters[1]
+function test() {
+  console.log(kanjiLvl)
+}
+</script>
+
 <style scoped lang="scss">
-$base-color: var(--c-n5-m);
-$secondary-color: var(--c-kanji-primary-l);
-.top {
+$base-color: v-bind(primaryColor);
+$secondary-color: v-bind(secondaryColor);
+
+.top-section {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-between;
 }
+
 .row {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
 }
 
-.bottom {
+.actions {
   cursor: pointer;
   position: absolute;
   bottom: 0;
@@ -78,8 +86,10 @@ $secondary-color: var(--c-kanji-primary-l);
   font-weight: bold;
   font-size: 0.8rem;
   color: var(--c-grey);
+
   span {
     margin-right: 1rem;
+
     &:last-child {
       margin-right: 0;
     }
@@ -88,6 +98,7 @@ $secondary-color: var(--c-kanji-primary-l);
 
 .l-side {
   flex: 1;
+
   h2 {
     text-align: center;
     font-family: 'Noto Sans JP', sans-serif;
@@ -96,17 +107,20 @@ $secondary-color: var(--c-kanji-primary-l);
     line-height: 133px;
     margin-bottom: 1.5rem;
   }
+
   p {
     font-weight: 700;
     padding-bottom: 0.6rem;
     font-size: 1rem;
   }
 }
+
 .r-side {
   flex: 2;
   display: flex;
   flex-direction: column;
-  & .card-header {
+
+  & .kanji-meaning {
     transform: translateY(-1.5rem);
     width: 80%;
     flex: 1;
@@ -115,7 +129,8 @@ $secondary-color: var(--c-kanji-primary-l);
     margin-bottom: 0.3rem;
     font-size: 2.3rem;
   }
-  & .description {
+
+  & .description-card {
     padding: 1.2rem;
     flex: 2;
     font-size: 1rem;
@@ -127,7 +142,7 @@ $secondary-color: var(--c-kanji-primary-l);
   }
 }
 
-.desc-card {
+.description-card {
   background: $secondary-color;
   border-radius: 5px;
   padding: 0.8rem;
@@ -161,6 +176,7 @@ $secondary-color: var(--c-kanji-primary-l);
   background: white;
   border-radius: 5px;
 }
+
 .reading:first-child {
   margin-bottom: 1rem;
 }

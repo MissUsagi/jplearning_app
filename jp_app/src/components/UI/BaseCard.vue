@@ -6,10 +6,19 @@
 
 <script>
 export default {
-  props: ['color', 'width'],
+  props: {
+    cardOutline: {
+      type: String,
+      default: 'n5'
+    },
+    width: {
+      type: String,
+      default: '640px'
+    },
+  },
   data() {
     return {
-      outlineColor: 'var(--c-n5-m)'
+      outlineColor: `var(--c-${this.cardOutline}-m)`
     }
   }
 }

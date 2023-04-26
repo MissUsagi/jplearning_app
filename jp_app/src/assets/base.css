@@ -17,6 +17,11 @@
   --c-n3-m: #F5C172;
   --c-n2-m: #9667AC;
   --c-n1-m: #9BE96B;
+  --c-n5-l: #F9F0F4;
+  --c-n4-l: #d8f9f5;
+  --c-n3-l: #fff7e6;
+  --c-n2-l: #f2ddf9;
+  --c-n1-l: #e6ffcd;
   --input-border: #c7c7cb;
 }
 
@@ -40,4 +45,13 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: var(--c-text-primary)
+}
+
+li {
+  list-style: none;
 }

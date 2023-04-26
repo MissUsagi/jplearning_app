@@ -9,7 +9,7 @@
           :id="level"
           :value="level"
           :label="level"
-          name="jlpt"
+          name="jlptLvl"
           @changeEvent="onInput($event, 'kanjiLvl')"
         />
       </div>
@@ -40,6 +40,7 @@
 
 <script>
 import BaseRadioBtn from '../UI/BaseRadioBtn.vue'
+import { useKanjiStore } from '../../stores/kanjiStore'
 export default {
   components: { BaseRadioBtn },
   data() {
@@ -47,7 +48,7 @@ export default {
       jlptLevels: ['n5', 'n4', 'n3', 'n2', 'n1'],
       inputLabels: ['Kanji', 'Znaczenie', "On'yomi", "On'yomi"],
       newKanji: {
-        id: '',
+        id: '9999',
         isDifficult: false,
         kanjiLvl: '',
         kanji: '',
@@ -55,12 +56,14 @@ export default {
         onReadings: '',
         kunReadings: '',
         description: ''
-      }
+      },
+      kanjiStore: useKanjiStore()
     }
   },
   methods: {
     onSave() {
       console.log(this.newKanji)
+      this.kanjiStore.addKanji(this.newKanji)
     },
     onInput(value, tab) {
       this.newKanji[tab] = value
@@ -80,21 +83,27 @@ export default {
     'grid-item3 grid-item3 grid-item4 grid-item4'
     'grid-item5 grid-item5 grid-item5 grid-item5';
 }
+
 .grid-item1 {
   grid-area: grid-item1;
 }
+
 .grid-item2 {
   grid-area: grid-item2;
 }
+
 .grid-item3 {
   grid-area: grid-item3;
 }
+
 .grid-item4 {
   grid-area: grid-item4;
 }
+
 .grid-item5 {
   grid-area: grid-item5;
 }
+
 .flex-row {
   display: flex;
   flex-direction: row;

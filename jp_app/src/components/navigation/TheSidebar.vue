@@ -1,9 +1,11 @@
 <template>
   <div class="sidebar">
     <h1 class="logo">Logo</h1>
-    <div class="nav">
-      <ul v-for="element in navElements">
-        <li>{{ element }}</li>
+    <div class="nav-container">
+      <ul v-for="element in sideNavigation">
+        <li class="nav-link">
+          <a href="#">{{ element }}</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -13,16 +15,13 @@
 export default {
   data() {
     return {
-      navElements: ['Lekcje', 'Kanji', 'Gramatyka', 'Słowniczek', 'Zakładki']
+      sideNavigation: ['Lekcje', 'Kanji', 'Gramatyka', 'Słowniczek', 'Zakładki']
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-li {
-  list-style: none;
-}
 .sidebar {
   position: fixed;
   top: 0;
@@ -38,13 +37,10 @@ li {
   margin-bottom: 2rem;
 }
 
-.nav ul li {
+.nav-link {
   cursor: pointer;
   text-transform: capitalize;
   margin: 15px 0;
-}
-
-li {
   font-size: 1.2rem;
 }
 </style>
