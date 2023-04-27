@@ -3,7 +3,13 @@ import { defineStore, storeToRefs } from 'pinia'
 import dummyData from './dummyData'
 
 export const useKanjiStore = defineStore('kanjiStore', () => {
-  const kanjiCharacters = ref(dummyData)
+  const kanjiCharacters = ref([])
+
+  async function getKanjiDatabase() {
+    const res = await fetch('http://localhost:5000/dummyData')
+    const data = await res.json()
+    kanjiCharacters.value = data
+  }
 
   const getKanji = computed(() => kanjiCharacters.value)
 
@@ -12,5 +18,5 @@ export const useKanjiStore = defineStore('kanjiStore', () => {
     console.log(kanjiCharacters.value)
   }
 
-  return { kanjiCharacters, getKanji, addKanji }
+  return { kanjiCharacters, addKanji, getKanji, getKanjiDatabase }
 })

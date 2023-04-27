@@ -1,0 +1,74 @@
+{
+  "dummyData": [
+    {
+      "id": 1,
+      "isDifficult": false,
+      "kanjiLvl": "N5",
+      "kanji": "見",
+      "onReadings": ["ケン"],
+      "kunReadings": ["み.る", "み.える", "み.せる"],
+      "meanings": "Patrzeć",
+      "description": [
+        "見る 【みる】 to see, to look, to watch, to view, to observe, to examine, to look over",
+        "見る見る 【みるみる】 very fast, in a twinkle, before one's eyes",
+        "見える 【みえる】 to be seen, to be visible"
+      ]
+    },
+    {
+      "id": 2,
+      "isDifficult": false,
+      "kanjiLvl": "N3",
+      "kanji": "議",
+      "onReadings": ["ギ"],
+      "kunReadings": ["-"],
+      "meanings": "Debata",
+      "description": [
+        "議 【ギ】 discussion, deliberation, thought, opinion",
+        "議案 【ギアン】 legislative bill, measure, agenda item",
+        "本会議 【ホンカイギ】 plenary session, regular"
+      ]
+    },
+    {
+      "id": 3,
+      "isDifficult": false,
+      "kanjiLvl": "N4",
+      "kanji": "家",
+      "onReadings": ["カ", "ケ"],
+      "kunReadings": ["いえ", "や", "うち"],
+      "meanings": "Dom",
+      "description": [
+        "家 【いえ】 house, residence, dwelling, family, household, lineage, family name",
+        "家主 【やぬし】 landlord, landlady, house owner, home owner, head of the household",
+        "本家 【ほんけ】 head house (family), birthplace, originator"
+      ]
+    },
+    {
+      "id": 4,
+      "isDifficult": false,
+      "kanjiLvl": "N2",
+      "kanji": "党",
+      "onReadings": ["トウ"],
+      "kunReadings": ["なかま", "むら"],
+      "meanings": "Grupa",
+      "description": [
+        "党 【トウ】 party (political), person who is fond of, fan of",
+        "党員 【トウイン】 party member",
+        "両党 【リョウトウ】 both political parties",
+        "同党 【ドウトウ】 same (political) party, the said"
+      ]
+    },
+    {
+      "id": 5,
+      "isDifficult": false,
+      "kanjiLvl": "N1",
+      "kanji": "統",
+      "onReadings": ["トウ"],
+      "kunReadings": ["す.べる", "ほび.る"],
+      "meanings": "Rządzić",
+      "description": [
+        "統括 【トウカツ】 unification, bringing together, generalization, control, supervision",
+        "統一 【トウイツ】 unity, consolidation, uniformity, unification, compatible"
+      ]
+    }
+  ]
+}

@@ -23,8 +23,9 @@ export default {
   flex-direction: column;
   padding: 0.5rem 0;
   textarea {
+    font-family: inherit;
     padding: 8px 10px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     border: 1px solid var(--input-border);
     border-radius: 4px;
   }

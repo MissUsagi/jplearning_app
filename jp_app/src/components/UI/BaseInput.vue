@@ -1,7 +1,7 @@
 <template>
   <div class="input-group">
     <label>{{ label }}</label>
-    <input :type="type" @blur="inputEventHandler" />
+    <input :type="type" @input="inputEventHandler" />
   </div>
 </template>
 
@@ -9,14 +9,14 @@
 export default {
   props: ['label', 'type'],
   emits: ['inputEvent'],
-  data() {
-    return {
-      inputValue: ''
-    }
-  },
+  // data() {
+  //   return {
+  //     // inputValue: ''
+  //   }
+  // },
   methods: {
     inputEventHandler(e) {
-      const inputValue = e.target.value
+      const inputValue = e.target.value.trim()
       this.$emit('inputEvent', inputValue)
     }
   }

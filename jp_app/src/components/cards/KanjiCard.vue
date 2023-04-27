@@ -1,11 +1,11 @@
 <template>
   <base-card width="640px" :card-outline="colorCode">
-    <div @click="test">
+    <div>
       <div class="top-section">
         <div class="badge">
           <span>{{ kanjiLvl }}</span>
         </div>
-        <div class="badge">
+        <div class="badge close" @click="$emit('onClose')">
           <!-- dodac ikonke  -->
           <span>X</span>
         </div>
@@ -56,9 +56,6 @@ const secondaryColor = `var(--c-${colorCode}-l)`
 // TEST SECTION
 // const { kanjiLvl, kanji, onReadings, kunReadings, description, meanings } =
 //   useKanjiStore().kanjiCharacters[1]
-function test() {
-  console.log(kanjiLvl)
-}
 </script>
 
 <style scoped lang="scss">
@@ -84,7 +81,7 @@ $secondary-color: v-bind(secondaryColor);
   bottom: 0;
   right: 1.5rem;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--c-grey);
 
   span {
@@ -179,5 +176,9 @@ $secondary-color: v-bind(secondaryColor);
 
 .reading:first-child {
   margin-bottom: 1rem;
+}
+
+.close {
+  cursor: pointer;
 }
 </style>

@@ -7,7 +7,7 @@
       :value="value"
       @change="$emit('changeEvent', $event.target.value)"
     />
-    <span class="checkmark"> {{ label }} </span>
+    <span class="checked"> {{ label }} </span>
   </label>
 </template>
 
@@ -24,7 +24,7 @@ input[type='radio'] {
   &:checked + span {
     background-color: var(--c-kanji-primary-l);
     &:before {
-      box-shadow: inset 0 0 0 5px var(--c-kanji-primary-m);
+      box-shadow: inset 0 0 0 7px var(--c-kanji-primary-m);
       background-color: white;
     }
   }
@@ -35,7 +35,7 @@ label {
   white-space: nowrap;
   font-weight: 500;
   text-transform: capitalize;
-  span {
+  .checked {
     display: inline-flex;
     align-items: center;
     text-align: center;
@@ -49,7 +49,8 @@ label {
     &::before {
       content: '';
       background-color: white;
-      border: 3px solid var(--c-kanji-primary-m);
+      // border: 3px solid var(--c-kanji-primary-m);
+      box-shadow: inset 0 0 0 3px var(--c-kanji-primary-m);
       width: 24px;
       height: 24px;
       border-radius: 50%;
