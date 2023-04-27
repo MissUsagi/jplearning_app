@@ -45,9 +45,43 @@ export default {
   components: { BaseRadioBtn },
   data() {
     return {
-      jlptLevels: ['n5', 'n4', 'n3', 'n2', 'n1'],
+      jlptLevels: ['N5', 'N4', 'N3', 'N2', 'N1'],
       inputLabels: ['Kanji', 'Znaczenie', "On'yomi", "On'yomi"],
       newKanji: {
+        id: 9999,
+        isDifficult: false,
+        kanjiLvl: '',
+        kanji: '',
+        meanings: '',
+        onReadings: [],
+        kunReadings: [],
+        description: []
+      },
+      kanjiStore: useKanjiStore()
+    }
+  },
+
+  methods: {
+    onSave() {
+      this.newKanji.id++
+      this.kanjiStore.addKanji(this.newKanji)
+      console.log(this.newKanji)
+      this.resetForm()
+    },
+
+    onInput(value, tab) {
+      if (tab === 'description') {
+        const splitIntoArray = value.split(/\r?\n/)
+        this.newKanji[tab] = splitIntoArray
+      } else if (tab === 'kunReadings' || tab === 'onReadings') {
+        const splitIntoArray = value.split(/[ ,]+/)
+        this.newKanji[tab] = splitIntoArray
+      } else this.newKanji[tab] = value
+    },
+
+    // TEST ONLY
+    resetForm() {
+      this.newKanji = {
         id: '9999',
         isDifficult: false,
         kanjiLvl: '',
@@ -56,17 +90,7 @@ export default {
         onReadings: '',
         kunReadings: '',
         description: ''
-      },
-      kanjiStore: useKanjiStore()
-    }
-  },
-  methods: {
-    onSave() {
-      console.log(this.newKanji)
-      this.kanjiStore.addKanji(this.newKanji)
-    },
-    onInput(value, tab) {
-      this.newKanji[tab] = value
+      }
     }
   }
 }
