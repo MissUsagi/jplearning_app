@@ -4,32 +4,28 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    cardOutline: {
-      type: String,
-      default: 'n5'
-    },
-    width: {
-      type: String,
-      default: '640px'
-    }
+<script setup>
+const props = defineProps({
+  cardOutline: {
+    type: String,
+    default: 'n5'
   },
-  data() {
-    return {
-      outlineColor: `var(--c-${this.cardOutline}-m)`
-    }
+  cardWidth: {
+    type: String,
+    default: '640px'
   }
-}
+})
+
+const outlineColor = `var(--c-${props.cardOutline}-m)`
 </script>
+
 
 <style scoped lang="scss">
 .card {
   position: relative;
   height: 100%;
   padding: 1.5rem;
-  width: v-bind(width);
+  width: v-bind(cardWidth);
   background-color: white;
   outline: 10px solid v-bind(outlineColor);
   border-radius: 12px;
