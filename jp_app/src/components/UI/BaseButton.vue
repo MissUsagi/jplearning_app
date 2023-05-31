@@ -1,16 +1,22 @@
 <template>
-  <button class="btn" type="button" @click="clickEventHandler">{{ btnTxt }}</button>
+  <button class="btn" :type="btnType">{{ btnTxt }}</button>
 </template>
 
-<script>
-export default {
-  props: ['btnTxt'],
-  methods: {
-    clickEventHandler() {
-      this.$emit('clickEvent')
-    }
+<script setup>
+defineProps({
+  btnType: {
+    type: String,
+    default: 'button'
+  },
+  btnTxt: {
+    type: String,
+    default: 'bButton'
+  },
+  btnClassname: {
+    required: false,
+    type: String
   }
-}
+})
 </script>
 
 <style scoped lang="scss">
@@ -21,6 +27,7 @@ export default {
   font-size: 1.4rem;
   text-transform: uppercase;
   font-weight: bold;
+  cursor: pointer;
 
   &.primary {
     background-color: var(--c-kanji-primary-m);

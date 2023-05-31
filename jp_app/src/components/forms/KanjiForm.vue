@@ -1,40 +1,67 @@
 <template>
-  <base-card width="540px">
-    <div>
-      <span>Poziom JLPT</span>
-      <div class="flex-row">
-        <base-radio-btn
-          v-for="(level, index) in jlptLevels"
-          :key="index + level"
-          :id="level"
-          :value="level"
-          :label="level"
-          name="jlptLvl"
-          @changeEvent="onInput($event, 'kanjiLvl')"
+  <base-card card-width="540px">
+    <form @submit.prevent="onSave">
+      <div>
+        <span>Poziom JLPT</span>
+        <div class="flex-row">
+          <!-- <base-radio-btn
+            v-for="(level, index) in jlptLevels"
+            :key="index + level"
+            :id="level"
+            :label="level"
+            :model-value="jlptLvl"
+            name="jlptLvl"
+            @update:modelValue="onInput($event, 'kanjiLvl')"
+          /> -->
+          <base-radio-btn
+            :options="jlptLevels"
+            name="jlptLevel"
+            @optionChange="onInput($event, 'kanjiLvl')"
+          />
+        </div>
+      </div>
+      <div class="grid-container">
+        <base-input
+          id="kanji_char"
+          class="grid-item1"
+          label="Kanji"
+          v-model="kanji"
+          @update:modelValue="onInput($event, 'kanji')"
+        />
+        <base-input
+          id="kanji_meaning"
+          class="grid-item2"
+          label="Znaczenie"
+          v-model="meaning"
+          @update:modelValue="onInput($event, 'meanings')"
+        />
+        <base-input
+          id="kanji_onyomi"
+          class="grid-item3"
+          label="On'yomi"
+          v-model="onyomi"
+          @update:modelValue="onInput($event, 'onReadings')"
+        />
+        <base-input
+          id="kanji_kunyomi"
+          class="grid-item4"
+          label="Kun'yomi"
+          v-model="kunyomi"
+          @update:modelValue="onInput($event, 'kunReadings')"
+        />
+        <base-textarea
+          class="grid-item5"
+          label="Przykłady"
+          id="kanji"
+          rows="10"
+          @update:modelValue="onInput($event, 'description')"
         />
       </div>
-    </div>
-    <div class="grid-container">
-      <base-input class="grid-item1" label="Kanji" @inputEvent="onInput($event, 'kanji')" />
-      <base-input class="grid-item2" label="Znaczenie" @inputEvent="onInput($event, 'meanings')" />
-      <base-input class="grid-item3" label="On'yomi" @inputEvent="onInput($event, 'onReadings')" />
-      <base-input
-        class="grid-item4"
-        label="Kun'yomi"
-        @inputEvent="onInput($event, 'kunReadings')"
-      />
-      <base-textarea
-        class="grid-item5"
-        label="Przykłady"
-        id="kanji"
-        rows="10"
-        @inputEvent="onInput($event, 'description')"
-      />
-    </div>
-    <div class="buttons">
-      <base-button btnTxt="Anuluj" className="btn outline" />
-      <base-button btnTxt="Zapisz" className="btn primary" @clickEvent="onSave" />
-    </div>
+      <div class="buttons">
+        <base-button btnTxt="Anuluj" btnType="button" className="btn outline" />
+        <base-button btnTxt="Zapisz" btnType="submit" className="btn primary" />
+      </div>
+    </form>
   </base-card>
 </template>
 
@@ -47,6 +74,11 @@ export default {
     return {
       jlptLevels: ['N5', 'N4', 'N3', 'N2', 'N1'],
       inputLabels: ['Kanji', 'Znaczenie', "On'yomi", "On'yomi"],
+      jlptLvl: 'N4',
+      kanji: '',
+      meaning: '',
+      onyomi: '',
+      kunyomi: '',
       newKanji: {
         id: 9999,
         isDifficult: false,
@@ -70,6 +102,7 @@ export default {
     },
 
     onInput(value, tab) {
+      console.log(value)
       if (tab === 'description') {
         const splitIntoArray = value.split(/\r?\n/)
         this.newKanji[tab] = splitIntoArray

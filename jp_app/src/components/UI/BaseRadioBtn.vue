@@ -1,21 +1,29 @@
 <template>
-  <label :for="id" class="custom-radio-btn">
-    <input
-      type="radio"
-      :id="id"
-      :name="name"
-      :value="value"
-      @change="$emit('changeEvent', $event.target.value)"
-    />
-    <span class="checked"> {{ label }} </span>
-  </label>
+  <div v-for="option in options">
+    <label :for="option">
+      <input
+        type="radio"
+        :id="option"
+        :name="name"
+        :value="option"
+        @change="$emit('optionChange', $event.target.value)"
+      />
+      <span class="checked"> {{ option }} </span>
+    </label>
+  </div>
 </template>
 
-<script>
-export default {
-  props: ['id', 'name', 'value', 'label'],
-  emits: ['changeEvent']
-}
+<script setup>
+const props = defineProps({
+  options: {
+    type: Array
+  },
+  name: {
+    type: String,
+    required: true
+  }
+})
+const emits = defineEmits(['optionChange'])
 </script>
 
 <style scoped lang="scss">
@@ -49,7 +57,6 @@ label {
     &::before {
       content: '';
       background-color: white;
-      // border: 3px solid var(--c-kanji-primary-m);
       box-shadow: inset 0 0 0 3px var(--c-kanji-primary-m);
       width: 24px;
       height: 24px;
